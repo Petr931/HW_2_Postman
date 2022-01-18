@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "906c85fd-16a2-4b39-9aa6-0e5f40e1b2b3",
+		"name": "HW_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EP_1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/first",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_2_light",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"actualName = JSON.parse(responseBody)\r",
+							"Name = \"Petr\"\r",
+							"pm.test(\"Name is ok\", function(){ \r",
+							"        if (actualName.name === Name){\r",
+							"            console.log(\"Норм\");\r",
+							"        }else {\r",
+							"            console.log(\"Error\")}\r",
+							"});\r",
+							"\r",
+							"actualAge = JSON.parse(responseBody)\r",
+							"Age = \"29\"\r",
+							"pm.test(\"Age is ok\", function(){ \r",
+							"        if (actualAge.age === Age){\r",
+							"            console.log(\"Норм\");\r",
+							"        }else {\r",
+							"            console.log(\"Error\")}\r",
+							"});\r",
+							"\r",
+							"actualSalary = JSON.parse(responseBody)\r",
+							"Salary = 40000\r",
+							"pm.test(\"Salary is ok\", function(){ \r",
+							"        if (actualSalary.salary === Salary){\r",
+							"            console.log(\"Норм\");\r",
+							"        }else {\r",
+							"            console.log(\"Error\")}\r",
+							"});\r",
+							"\r",
+							"actualNameReq = request.data\r",
+							"NameReq = actualNameReq.name\r",
+							"pm.test(\"Name is ok\", function(){ \r",
+							"        if (actualName.name === NameReq){\r",
+							"            console.log(\"Норм\");\r",
+							"        }else {\r",
+							"            console.log(\"Error\")}\r",
+							"});\r",
+							"\r",
+							"actualAgeReq = request\r",
+							"AgeReq = request.age\r",
+							"pm.test(\"Age is ok\", function(){ \r",
+							"        if (actualAgeReq.age === AgeReq){\r",
+							"            console.log(\"Норм\");\r",
+							"        }else {\r",
+							"            console.log(\"Error\")}\r",
+							"});\r",
+							"\r",
+							"actualSalaryReq = request.data\r",
+							"SalaryReq = actualSalaryReq.salary\r",
+							"pm.test(\"Salary is ok\", function(){ \r",
+							"        if (actualSalary.salary == SalaryReq){\r",
+							"            console.log(\"Норм\");\r",
+							"        }else {\r",
+							"            console.log(\"Error\")}\r",
+							"});\r",
+							"\r",
+							"BodyParse = JSON.parse(responseBody)\r",
+							"familyValue = BodyParse.family\r",
+							"familyValueX4 = familyValue.u_salary_1_5_year\r",
+							"pm.test(\"Salary_1.5_year is ok\", function(){\r",
+							"        if (familyValueX4 === SalaryReq*4){\r",
+							"            console.log(\"Норм\");\r",
+							"        }else {\r",
+							"            console.log(\"Error\")}\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Petr",
+							"type": "default"
+						},
+						{
+							"key": "age",
+							"value": "29",
+							"type": "default"
+						},
+						{
+							"key": "salary",
+							"value": "40000",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_3",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
